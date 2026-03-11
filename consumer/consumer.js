@@ -2,7 +2,7 @@ import { Kafka } from "kafkajs"
 import Redis from "ioredis"
 import dotenv from "dotenv"
 
-dotenv.config()
+dotenv.config({ path: "../.env" })
 
 const kafka = new Kafka({
     clientId: "consumer",
