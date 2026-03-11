@@ -1,0 +1,65 @@
+{
+  "info": {
+    "_postman_id": "333d73ad-e3cc-4842-b1e0-ba2530f1c57f",
+    "name": "Insta Supply",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "30028604"
+  },
+  "item": [
+    {
+      "name": "Upload Csv",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "uuid": "bb646ba9-ac9f-4e0d-bd03-250f2a847040",
+              "src": "/C:/Users/ASUS/Downloads/instasupply.csv"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:5000/upload",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "upload"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Fetch Records ",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/records",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "records"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

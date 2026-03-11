@@ -38,19 +38,29 @@ Fetch API with Cache Fallback
 
 ## Project Structure
 
-interview-assignment
+instasupply-interview-assignment
 │
 ├── api
-│ ├── src
-│ │ ├── routes
-│ │ │ ├── upload.js
-│ │ │ └── fetch.js
-│ │ └── server.js
+│   ├── src
+│   │   ├── routes
+│   │   │   ├── upload.route.js
+│   │   │   └── fetch.route.js
+│   │   │
+│   │   ├── app.js          # Express application setup (routes, middleware)
+│   │   └── server.js       # Starts the HTTP server
+│   │
+│   └── tests
+│       └── api.test.js     # Basic API tests using Jest + Supertest
 │
 ├── consumer
-│ └── consumer.js
+│   └── consumer.js         # Kafka consumer service that updates Redis cache
 │
-├── docker-compose.yml
+├── docker-compose.yml      # Local infrastructure (PostgreSQL, Redis, Kafka)
+│
+├── postman_collection.json # Postman collection to easily test the APIs
+│
+├── instasupply.csv         # Sample CSV file for testing the upload endpoint
+│
 └── README.md
 
 
@@ -62,16 +72,16 @@ interview-assignment
 
 Copy the example environment file:
 
-=> In api directory .env would be created by Prisma, just add the remaining value from env.example file in API directory
+Step 1 : In api directory .env would be created by Prisma, just add the remaining value from env.example file in API directory
 cp .env.example .env
 
-=> In root directory, just copy paste the .env.example content to .env file 
+Step 2 : In root directory, just copy paste the .env.example content to .env file 
 cp .env.example .env 
 
 
 ### 1. Start infrastructure
 
-docker compose up -d
+`docker compose up -d`
 
 This starts:
 
@@ -85,12 +95,12 @@ This starts:
 ### 2. Install dependencies
 
 API
-cd api
-pnpm install
+`cd api`
+`pnpm install`
 
 Consumer
-cd ../consumer
-pnpm install
+`cd consumer`
+`pnpm install`
 
 ---
 
@@ -99,22 +109,22 @@ pnpm install
 
 Run the following command inside the API service:
 
-cd api
-pnpm prisma migrate deploy
+`cd api`
+`pnpm prisma migrate deploy`
 
 This applies the committed Prisma migrations and creates the required database tables.
 
 ### 4. Generate Prisma client
 
-cd api
-pnpm prisma generate
+`cd api`
+`pnpm prisma generate`
 
 
 This generates the Prisma client used by the API.
 
 ### 5. Start the API server
 
-pnpm start
+`pnpm start`
 
 Server will start on:
 
@@ -126,8 +136,8 @@ http://localhost:5000
 
 Open another terminal and run:
 
-cd consumer
-node consumer.js
+`cd consumer`
+`node consumer.js`
 
 
 This service listens to Kafka events and updates the Redis cache.
@@ -187,6 +197,36 @@ Example response:
 
 ## Running Redis CLI
 
-Command 1 : docker exec -it redis redis-cli  ( in terminal)
+```bash
+docker exec -it redis redis-cli
+GET records:all
+DEL records:all
+```
 
-Command 2 : GET records:all
+
+## Testing the APIs
+
+To make testing easier, the repository includes:
+
+- **Postman Collection (`postman_collection.json`)**
+- **Sample CSV file (`instasupply.csv`)**
+
+### Using the Postman Collection
+
+1. Open **Postman**.
+2. Click **Import**.
+3. Select the file `postman_collection.json`.
+4. Use the included requests to test the following endpoints:
+   - **Upload CSV**
+   - **Fetch records**
+
+### Sample CSV
+
+You can use the provided CSV file when testing the upload endpoint.
+
+Example CSV content:
+
+```csv
+name,email
+john,john@test.com
+roger,roger@test.com
