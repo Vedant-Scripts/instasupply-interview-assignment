@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+
+# env files
+.env
+.env.*
+
+# but allow example env file
+!.env.example
+
+# logs
+logs
+*.log
+
+# prisma generated client
+api/generated/
+
+# build output
+dist
+coverage
+
+# OS junk
+.DS_Store
+Thumbs.db
