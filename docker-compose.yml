@@ -1,12 +1,12 @@
 services:
   postgres:
     image: postgres:18
-    container_name: postgres-instasupply
+    container_name: postgres-eventdriven
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: secret
-      POSTGRES_DB: instasupply_db
+      POSTGRES_DB: event_driven_pipeline_db
     ports:
       - "5432:5432"
   

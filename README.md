@@ -1,4 +1,4 @@
-# Backend Assessment – Event Driven System
+# Event Driven System
 
 This project implements a backend system that processes CSV uploads, stores records in PostgreSQL, publishes events to Kafka, and updates a Redis cache via a consumer service.
 
@@ -38,7 +38,7 @@ Fetch API with Cache Fallback
 
 ## Project Structure
 
-instasupply-interview-assignment
+event-driven-csv-pipeline
 │
 ├── api
 │   ├── src
@@ -59,7 +59,7 @@ instasupply-interview-assignment
 │
 ├── postman_collection.json # Postman collection to easily test the APIs
 │
-├── instasupply.csv         # Sample CSV file for testing the upload endpoint
+├── sampleData.csv         # Sample CSV file for testing the upload endpoint
 │
 └── README.md
 
@@ -209,7 +209,7 @@ DEL records:all
 To make testing easier, the repository includes:
 
 - **Postman Collection (`postman_collection.json`)**
-- **Sample CSV file (`instasupply.csv`)**
+- **Sample CSV file (`sampleData.csv`)**
 
 ### Using the Postman Collection
 
