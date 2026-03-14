@@ -1,7 +1,7 @@
 {
   "info": {
-    "_postman_id": "333d73ad-e3cc-4842-b1e0-ba2530f1c57f",
-    "name": "Insta Supply",
+    "_postman_id": "912c5459-5ddd-4d4a-a0d2-f4d5b9c02b40",
+    "name": "Event Driven Csv Pipeline",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "30028604"
   },
@@ -21,7 +21,7 @@
               "key": "file",
               "type": "file",
               "uuid": "bb646ba9-ac9f-4e0d-bd03-250f2a847040",
-              "src": "/C:/Users/ASUS/Downloads/instasupply.csv"
+              "src": "/C:/Users/ASUS/Downloads/sampleData.csv"
             }
           ]
         },
